@@ -25,7 +25,7 @@ module.exports.run = async function ({ api, event, args }) {
 			return api.sendMessage('Please provide a prompt to generate a text response.\nExample: GPT4 What is the meaning of life?', event.threadID, messageID);
 		}
 
-		const gpt4_api = `https://ai-chat-gpt-4-lite.onrender.com/api/hercai?question=${encodeURIComponent(prompt)}`;
+		const gpt4_api = `https://nash-rest-api.replit.app/gpt4?query=${encodeURIComponent(prompt)}`;
 
 		const response = await axios.get(gpt4_api);
 
