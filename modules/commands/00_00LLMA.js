@@ -26,7 +26,7 @@ module.exports.run = async function ({ api, event, args }) {
 			return api.sendMessage('Please provide a prompt to generate a text response.\n\nllama {prompt}\nExample: llama What is kardashev scale?\n', event.threadID, event.messageID);
 		}
 
-		const llama_api = `https://llama.aliestercrowley.com/api?prompt=${encodeURIComponent(prompt)}`;
+		const llama_api = `https://nash-rest-api.replit.app/llama?query=${encodeURIComponent(prompt)}`;
 
 		const response = await axios.get(llama_api);
 
