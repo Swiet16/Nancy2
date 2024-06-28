@@ -7,12 +7,12 @@ module.exports = function({ api, models }) {
 	const fs = require("fs");
 	const moment = require('moment-timezone');
 	const axios = require("axios");
-  var day = moment.tz("Asia/Manila").day();
+  var day = moment.tz("Asia/Kolkata").day();
   
   
-  const checkttDataPath = __dirname + '/../modules/commands/checktt/';
+  const checkttDataPath = __dirname + '/../Priyansh/commands/checktt/';
   setInterval(async() => {
-    const day_now = moment.tz("Asia/Manila").day();
+    const day_now = moment.tz("Asia/Kolkata").day();
     if (day != day_now) {
       day = day_now;
       const checkttData = fs.readdirSync(checkttDataPath);
@@ -131,7 +131,7 @@ module.exports = function({ api, models }) {
         return logger.loader(global.getText('listen', 'failLoadEnvironment', error), 'error');
     }
 }());
-	logger(`${api.getCurrentUserID()} - [ ${global.config.PREFIX} ] • ${(!global.config.BOTNAME) ? "This bot was made by CatalizCS, SpermLord, Choru And John Arida" : global.config.BOTNAME}`, "[ BOT INFO ]");
+	logger(`${api.getCurrentUserID()} - [ ${global.config.PREFIX} ] • ${(!global.config.BOTNAME) ? "This bot was made by Priyansh" : global.config.BOTNAME}`, "[ BOT INFO ]");
 	
 	///////////////////////////////////////////////
 	//========= Require all handle need =========//
@@ -148,7 +148,7 @@ module.exports = function({ api, models }) {
 
 
 	//DEFINE DATLICH PATH
-	const datlichPath = __dirname + '/../modules/commands/cache/datlich.json';
+	const datlichPath = __dirname + '/../Priyansh/commands/cache/datlich.json';
 
 	//FUNCTION HOẠT ĐỘNG NHƯ CÁI TÊN CỦA NÓ, CRE: DUNGUWU
 	const monthToMSObj = {
@@ -200,7 +200,7 @@ module.exports = function({ api, models }) {
 		var data = JSON.parse(fs.readFileSync(datlichPath));
 
 		//GET CURRENT TIME
-		var timeVN = moment().tz('Asia/Manila').format('Manila:mm:ss');
+		var timeVN = moment().tz('Asia/Kolkata').format('DD/MM/YYYU_HH:mm:ss');
 		timeVN = timeVN.split("_");
 		timeVN = [...timeVN[0].split("/"), ...timeVN[1].split(":")];
 
@@ -246,13 +246,13 @@ module.exports = function({ api, models }) {
 				out.attachment = [];
 				for (a of el.ATTACHMENT) {
 					let getAttachment = (await axios.get(encodeURI(a.url), { responseType: "arraybuffer"})).data;
-					fs.writeFileSync(__dirname + `/../modules/commands/cache/${a.fileName}`, Buffer.from(getAttachment, 'utf-8'));
-					out.attachment.push(fs.createReadStream(__dirname + `/../modules/commands/cache/${a.fileName}`));
+					fs.writeFileSync(__dirname + `/../Priyansh/commands/cache/${a.fileName}`, Buffer.from(getAttachment, 'utf-8'));
+					out.attachment.push(fs.createReadStream(__dirname + `/../Priyansh/commands/cache/${a.fileName}`));
 				}
 			}
 			console.log(out);
 			if ("BOX" in el) await api.setTitle(el["BOX"], el["TID"]);
-			api.sendMessage(out, el["TID"], () => ("ATTACHMENT" in el) ? el.ATTACHMENT.forEach(a => fs.unlinkSync(__dirname + `/../modules/commands/cache/${a.fileName}`)) : "");
+			api.sendMessage(out, el["TID"], () => ("ATTACHMENT" in el) ? el.ATTACHMENT.forEach(a => fs.unlinkSync(__dirname + `/../Priyansh/commands/cache/${a.fileName}`)) : "");
 		}
 
 	}
@@ -264,23 +264,6 @@ module.exports = function({ api, models }) {
 	/////////////////////////////////////////////////
 	
 	return (event) => {
-    if (event.type == "change_thread_image") api.sendMessage(`» [ GROUP UPDATES ] ${event.snippet}`, event.threadID);
-    let data = JSON.parse(fs.readFileSync(__dirname + "/../modules/commands/cache/approvedThreads.json"));
-    let adminBot = global.config.ADMINBOT
-    if (!data.includes(event.threadID) && !adminBot.includes(event.senderID)) {
-      //getPrefix
-      const threadSetting = global.data.threadData.get(parseInt(event.threadID)) || {};
-      const prefix = (threadSetting.hasOwnProperty("PREFIX")) ? threadSetting.PREFIX : global.config.PREFIX;
-
-      //check body
-      if (event.body && event.body == `${prefix}request`) {
-        adminBot.forEach(e => {
-          api.sendMessage(`» ID: ${event.threadID}\n» Requested For Approval! `, e);
-        })
-        return api.sendMessage(`𝐘𝐨𝐮𝐫 𝐑𝐞𝐪𝐮𝐞𝐬𝐭 𝐇𝐚𝐬 𝐁𝐞𝐞𝐧 𝐒𝐮𝐜𝐜𝐞𝐬𝐬𝐟𝐮𝐥𝐥𝐲 𝐬𝐞𝐧𝐭 𝐭𝐨 𝐭𝐡𝐞 𝐚𝐝𝐦𝐢𝐧𝐬☑️, !`, event.threadID);
-      }
-      if (event.body && event.body.startsWith(prefix)) return api.sendMessage(`⛔𝐘𝐨𝐮𝐫 𝐆𝐫𝐨𝐮𝐩 𝐡𝐚𝐬 𝐛𝐞𝐞𝐧 𝐫𝐞𝐣𝐞𝐜𝐭𝐞𝐝⛔. 𝐏𝐥𝐞𝐚𝐬𝐞 𝐀𝐬𝐤 𝐅𝐨𝐫 𝐀𝐩𝐩𝐫𝐨𝐯𝐚𝐥 𝐅𝐢𝐫𝐬𝐭, 𝐓𝐲𝐩𝐞 𝐎𝐧 𝐘𝐨𝐮𝐫 𝐓𝐡𝐫𝐞𝐚𝐝: ${prefix}𝐫𝐞𝐪𝐮𝐞𝐬𝐭\n\n𝐀𝐝𝐦𝐢𝐧 𝐒𝐨𝐜𝐢𝐚𝐥 𝐦𝐞𝐝𝐢𝐚:\n https://www.facebook.com/swordigo.swordslush`, event.threadID);
-    };
     switch (event.type) {
       case "message":
       case "message_reply":
@@ -302,5 +285,3 @@ module.exports = function({ api, models }) {
     }
   };
 };
-
-//THIZ BOT WAS MADE BY ME(CATALIZCS) AND MY BROTHER SPERMLORD - DO NOT STEAL MY CODE (つ ͡ ° ͜ʖ ͡° )つ ✄ ╰⋃╯S MADE BY ME(CATALIZCS) AND MY BROTHER SPERMLORD - DO NOT STEAL MY CODE (つ ͡ ° ͜ʖ ͡° )つ ✄ ╰⋃╯
