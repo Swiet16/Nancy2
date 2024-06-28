@@ -22,7 +22,7 @@ module.exports.run = async function({ api, event, args }) {
     // Send "Please wait" message
     api.sendMessage("Please wait, searching for images...", event.threadID);
 
-    const res = await axios.get(`https://api-dien.kira1011.repl.co/pinterest?search=${encodeURIComponent(keySearchs)}`);
+    const res = await axios.get(`https://joshweb.click/api/pinterest?q=${encodeURIComponent(keySearchs)}`);
     const data = res.data.data;
     var num = 0;
     var imgData = [];
