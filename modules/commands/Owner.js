@@ -18,8 +18,8 @@ module.exports.run = async ({ api, event }) => {
 		const ownerInfo = {
 			name: `${global.config.BOTOWNER}`,
 			gender: 'MALE',
-			age: '17',
-			height: '5,4',
+			age: '16',
+			height: 'unknown',
 			facebookLink: `${global.config.OWNERLINK}`,
 			status: 'SINGLE'
 		};
