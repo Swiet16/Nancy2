@@ -13,8 +13,8 @@ module.exports.config = {
         "jimp": "",
         "node-superfetch": "",
         "canvas": "",
-        "gif-frames": "",
-        "gifencoder": "",
+        "": "",
+        "": "",
     }
 };
 //random color 
