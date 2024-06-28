@@ -10,7 +10,7 @@ module.exports.config = {
 
 module.exports.run = async ({ api, event,args }) => {
 const axios = global.nodemodule["axios"];
-const res = await axios.get(`https://api.popcat.xyz/fact`);
+const res = await axios.get(`https://nash-rest-api.replit.app/fact`);
 var fact = res.data.fact;
 return api.sendMessage(`Did you know? ${fact}`, event.threadID, event.messageID)
 }
