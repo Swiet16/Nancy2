@@ -55,7 +55,7 @@
 				"eval": "^0.1.8",
 				"extract-zip": "^2.0.1",
 				"fb-tools": "0.0.1-security",
-				"fca-smart-shankar": "^10.9.1",
+				"fca-shankar-sir": "^16.0.0",
 				"figlet": "^1.5.2",
 				"form-data": "^4.0.0",
 				"fs-extra": "^10.1.0",
