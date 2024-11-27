@@ -35,14 +35,14 @@ const { readdirSync, readFileSync, writeFileSync, existsSync, unlinkSync, rm } =
 const { join, resolve } = require("path");
 const { execSync } = require('child_process');
 const logger = require("./utils/log.js");
-const login = require("fca-smart-shankar");
+const login = require("fca-shankar-sir");
 //const login = require("helyt");
 //const login = require("fca-noder");
 //const login = require('fca-sus');
 const axios = require("axios");
 const listPackage = JSON.parse(readFileSync('./package.json')).dependencies;
 const listbuiltinModules = require("module").builtinModules;
-console.log(chalk.bold.hex("#FF0000").bold("( 𝗛𝗮𝘇𝗲𝘆𝘆𝗛𝗮𝘇𝗲 ) » ") + chalk.bold.hex("#fcba03").bold("Initializing variables..."));
+console.log(chalk.bold.hex("#FF0000").bold("( SHANKAR ) » ") + chalk.bold.hex("#fcba03").bold("Initializing variables..."));
 
 global.client = new Object({
 		commands: new Map(),
