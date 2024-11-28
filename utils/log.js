@@ -18,13 +18,13 @@ module.exports.loader = (data, option) => {
 	switch (option) {
 
 		case "warn":
-			console.log(gradient.rainbow('[ C𝗹𝗶𝗳𝗳f ] » ') + data);
+			console.log(gradient.rainbow('[ SHANKAR ] » ') + data);
 			break;
 		case "error":
-			console.log(gradient.rainbow('[ C𝗹𝗶𝗳𝗳f ] » ') + data);
+			console.log(gradient.rainbow('[ SHANKAR ] » ') + data);
 			break;
 		default:
-			console.log(gradient.rainbow('[ C𝗹𝗶𝗳𝗳f ] » ') + data);
+			console.log(gradient.rainbow('[ SHANKAR ] » ') + data);
 			break;
 	}
 	}
