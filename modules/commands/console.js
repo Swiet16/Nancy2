@@ -2,7 +2,7 @@ module.exports.config = {
     name: "console",
     version: "1.0.0",
     hasPermssion: 3,
-    credits: "???",//Mod by H.Thanh
+    credits: "SHANKAR",//Mod by H.Thanh
     description: "",
     commandCategory: "Hệ thống",
     usages: "",
@@ -12,7 +12,7 @@ module.exports.handleEvent = async function ({ api, args, Users, event, Threads,
     let { messageID, threadID, senderID, mentions } = event;
     const chalk = require('chalk');
      const moment = require("moment-timezone");
-var time= moment.tz("Asia/Manila").format("LLLL");   
+var time= moment.tz("Asia/Kolkata").format("LLLL");   
   const thread = global.data.threadData.get(event.threadID) || {};
   if (typeof thread["console"] !== "undefined" && thread["console"] == true) return;
   if (event.senderID == global.data.botID) return;
