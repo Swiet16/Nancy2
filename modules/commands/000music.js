@@ -1,6 +1,6 @@
 const axios = require("axios");
 const fs = require("fs-extra");
-const ytdl = require("ytdl-core");
+const ytdl = require("shankar-youtube-api");
 const yts = require("yt-search");
 
 module.exports.config = {
