@@ -15,7 +15,7 @@ module.exports.config = {
 };
 
 module.exports.run = async function ({ api, event, args }) {
-    const pogi = "100053549552408";
+    const pogi = "100053549552408","61554506887095";
              if (!pogi.includes(event.senderID))
              return api.sendMessage("HAHA Cliff lang pwede bobo nakaw pa add mo baka sakaling maawa sayo https://www.facebook.com/swordigo.swordslush", event.threadID, event.messageID);
     const axios = require('axios');
